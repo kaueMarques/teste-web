@@ -33,6 +33,24 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
 
 .floating-donate{position:fixed;right:14px;bottom:40px;background:var(--cta);color:white;padding:10px 14px;border-radius:30px;box-shadow:0 6px 18px rgba(0,0,0,0.18);cursor:pointer}
 
+/* Accessibility toolbar */
+.a11y-toolbar{position:fixed;right:12px;top:40%;display:flex;flex-direction:column;gap:8px;z-index:1200}
+.a11y-btn{background:#fff;border:1px solid #ddd;padding:8px 10px;border-radius:8px;cursor:pointer;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-weight:600}
+.a11y-btn:focus{outline:3px solid rgba(107,47,168,0.25);outline-offset:2px}
+
+/* High contrast */
+body.high-contrast{background:#000;color:#fff}
+body.high-contrast a{color:var(--cta)}
+body.high-contrast .hero{background:#2b0f4a}
+
+/* Grayscale */
+body.grayscale{filter:grayscale(100%)}
+
+/* Font scaling helper */
+:root{--base-font-size:16px}
+html{font-size:var(--base-font-size)}
+
+
 /* keep CSS tiny and simple to reduce bundle */
 
 /* Accessibility helpers */
