@@ -48,11 +48,19 @@ Deploy para Vercel
 
 Após o deploy, copie a URL pública do Vercel (ex: `https://meu-site.vercel.app`) e atualize este README na seção "URL do Deploy" abaixo, então faça commit e push.
 
-URL do Deploy (preencha após o primeiro deploy):
+URL do Deploy (public):
 
-```
-https://<seu-site-aqui>.vercel.app
-```
+- https://teste-web-kappa.vercel.app/
+
+Como acessar o site publicado no Vercel
+
+- Abra o link direto no navegador: https://teste-web-kappa.vercel.app/
+- Painel do Vercel: acesse https://vercel.com/dashboard e selecione o projeto "teste-web-kappa" para ver detalhes.
+- Ver deploys e logs: no Dashboard → Deployments, clique no deploy mais recente e escolha "View Logs" para inspeção.
+- Forçar novo deploy (redeploy): no mesmo deploy clique em "Redeploy" ou use "Deployments" → "Trigger Redeploy".
+- Domínio público: Dashboard → Settings → Domains (a URL pública aparece ali depois do deploy).
+
+Observação: o Vercel mostra automaticamente o build logs e o histórico de deploys; para mudanças locais, basta commitar e pushar para a branch monitorada (neste projeto: `master`) e o Vercel executará um novo build.
 
 Notas
 
