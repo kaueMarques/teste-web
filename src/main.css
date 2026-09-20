@@ -42,6 +42,16 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
 body.high-contrast{background:#000;color:#fff}
 body.high-contrast a{color:var(--cta)}
 body.high-contrast .hero{background:#2b0f4a}
+/* Ensure navigation and controls remain visible in high-contrast mode */
+body.high-contrast .nav{background:#0b0b0b;color:#fff}
+body.high-contrast .nav a{color:#fff}
+body.high-contrast .nav.open{box-shadow:0 8px 28px rgba(255,255,255,0.06)}
+body.high-contrast .nav-toggle{color:#fff}
+body.high-contrast .donate-btn{background:#ffa500;color:#000}
+body.high-contrast .a11y-btn{background:#111;color:#fff;border-color:#444}
+/* Keep dropdown and toggle above the toolbar */
+.nav-toggle{position:relative;z-index:1301}
+.nav.open{z-index:1300}
 
 /* Grayscale */
 body.grayscale{filter:grayscale(100%)}
