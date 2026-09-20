@@ -49,4 +49,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
   modalOk && modalOk.addEventListener('click', ()=> closeModal())
   modal && modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal() })
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
+
+  // VLibras widget lazy load
+  try{
+    const s = document.createElement('script')
+    s.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
+    s.defer = true
+    s.onload = ()=>{
+      try{ new window.VLibras.Widget('https://vlibras.gov.br/app') }catch(e){console.warn('VLibras init failed',e)}
+    }
+    document.body.appendChild(s)
+  }catch(e){console.warn('VLibras load error',e)}
+
+  // floating donate opens same modal
+  const flo = document.querySelector('.floating-donate')
+  flo && flo.addEventListener('click', ()=> openModal())
 })
