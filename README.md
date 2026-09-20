@@ -1,10 +1,60 @@
-# Landing Vite - Simples
 
-Projeto de uma única página (landing) criado com Vite para demonstração.
+# ONG Mãos Unidas - Landing (Campanha de Doação de Alimentos)
+
+Projeto de uma única página criado com Vite. Esta versão foca numa campanha de doação de alimentos, com componentes leves, acessibilidade e integração com o widget VLibras.
 
 Feito por: kaueMarques
 
-Scripts:
+Scripts disponíveis:
 
-- `npm run dev` - roda o servidor de desenvolvimento
-- `npm run build` - gera os arquivos de produção
+- `npm run dev` - roda o servidor de desenvolvimento (http://localhost:5173 por padrão)
+- `npm run build` - gera os arquivos de produção em `dist/`
+- `npm run preview` - serve o build em modo de preview local
+
+Como rodar localmente
+
+1. Instale dependências:
+
+```bash
+npm install
+```
+
+2. Rodar em desenvolvimento:
+
+```bash
+npm run dev
+```
+
+3. Gerar build de produção:
+
+```bash
+npm run build
+```
+
+4. Verificar o build localmente:
+
+```bash
+npm run preview
+```
+
+Deploy para Vercel
+
+1. Crie uma conta em https://vercel.com/ e conecte seu GitHub.
+2. No painel do Vercel, crie um novo projeto e escolha o repositório `kaueMarques/teste-web`.
+3. Configure (se necessário):
+	- Build Command: `npm run build`
+	- Output Directory: `dist`
+4. Clique em Deploy. O Vercel executará o build e publicará o site.
+
+Após o deploy, copie a URL pública do Vercel (ex: `https://meu-site.vercel.app`) e atualize este README na seção "URL do Deploy" abaixo, então faça commit e push.
+
+URL do Deploy (preencha após o primeiro deploy):
+
+```
+https://<seu-site-aqui>.vercel.app
+```
+
+Notas
+
+- O projeto inclui um widget VLibras carregado de forma assíncrona para acessibilidade em Libras.
+- Não é recomendado commitar a pasta `dist/` quando estiver usando Vercel; o Vercel fará o build automaticamente.
