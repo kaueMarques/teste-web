@@ -98,23 +98,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(vl) ensureVlibras()
   })()
 
-  const navToggle = document.getElementById('navToggle')
-  const siteNav = document.getElementById('siteNav')
-  if(navToggle && siteNav){
-    navToggle.addEventListener('click', ()=>{
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true'
-      navToggle.setAttribute('aria-expanded', String(!expanded))
-      siteNav.classList.toggle('open')
-    })
-
-    siteNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.setAttribute('aria-expanded', 'false')
-        siteNav.classList.remove('open')
-      })
-    })
-  }
-
   function openModal(){
     lastFocused = document.activeElement
     modal.setAttribute('aria-hidden','false')
@@ -134,7 +117,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   modalOk && modalOk.addEventListener('click', ()=> closeModal())
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
 
-  document.querySelectorAll('.a11y-btn, .vlibras-btn, .donate-btn, .nav-toggle').forEach(btn=>{
+  document.querySelectorAll('.a11y-btn, .vlibras-btn').forEach(btn=>{
     btn.addEventListener('mousedown', e=> e.preventDefault())
     btn.addEventListener('click', e=> e.preventDefault())
   })
