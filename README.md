@@ -37,18 +37,6 @@ npm run build
 npm run preview
 ```
 
-Deploy para Vercel
-
-1. Crie uma conta em https://vercel.com/ e conecte seu GitHub.
-2. No painel do Vercel, crie um novo projeto e escolha o repositório `kaueMarques/teste-web`.
-3. Configure (se necessário):
-	- Build Command: `npm run build`
-	- Output Directory: `dist`
-4. Clique em Deploy. O Vercel executará o build e publicará o site.
-
-Após o deploy, copie a URL pública do Vercel (ex: `https://meu-site.vercel.app`) e atualize este README na seção "URL do Deploy" abaixo, então faça commit e push.
-
-
 URL do Deploy (public):
 
 - https://teste-web-kappa.vercel.app/
