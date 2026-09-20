@@ -21,6 +21,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const modalOk = document.getElementById('modalOk')
   let lastFocused = null
 
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle')
+  const siteNav = document.getElementById('siteNav')
+  if(navToggle && siteNav){
+    navToggle.addEventListener('click', ()=>{
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true'
+      navToggle.setAttribute('aria-expanded', String(!expanded))
+      siteNav.classList.toggle('open')
+    })
+  }
+
   function openModal(){
     lastFocused = document.activeElement
     modal.setAttribute('aria-hidden','false')
