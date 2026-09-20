@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   donateBtn && donateBtn.addEventListener('click', ()=> openModal())
   modalClose && modalClose.addEventListener('click', ()=> closeModal())
   modalOk && modalOk.addEventListener('click', ()=> closeModal())
-  modal && modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal() })
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
 
   document.querySelectorAll('.a11y-btn, .vlibras-btn, .donate-btn, .nav-toggle').forEach(btn=>{
