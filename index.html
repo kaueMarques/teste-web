@@ -3,14 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing ONG - Simples</title>
+    <title>Landing ONG - Mãos Unidas</title>
     <link rel="stylesheet" href="/src/main.css">
   </head>
   <body>
-    <main class="container">
-      <header class="hero">
-          <h1>ONG Mãos Unidas</h1>
-          <p>Trabalhando por comunidades mais fortes — educação, inclusão e sustentabilidade.</p>
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <h1 class="brand">ONG Mãos Unidas</h1>
+        <nav aria-label="Navegação principal">
+          <ul class="nav">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#mission">Missão</a></li>
+            <li><a href="#how-to-help">Como Ajudar</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </nav>
+        <button class="donate-btn" id="donateBtn" aria-haspopup="dialog">Doar</button>
+      </div>
+    </header>
+
+    <main id="main" class="container" role="main">
+      <header id="home" class="hero" role="region" aria-label="Apresentação">
+          <h2 class="hero-title">ONG Mãos Unidas</h2>
+          <p class="hero-sub">Trabalhando por comunidades mais fortes — educação, inclusão e sustentabilidade.</p>
           <p><a class="cta" href="#how-to-help">Doe ou Seja Voluntário</a></p>
         </header>
 
@@ -35,7 +52,7 @@
           <p>Promover oportunidades de aprendizagem e inclusão para famílias em situação de vulnerabilidade, incentivando práticas sustentáveis e geração de renda.</p>
         </section>
 
-        <section id="how-to-help" class="about">
+        <section id="how-to-help" class="about" role="region" aria-labelledby="how-to-help-heading">
           <h2>Como ajudar</h2>
           <ul>
             <li>Doações financeiras para projetos locais;</li>
@@ -43,10 +60,26 @@
             <li>Divulgação e parcerias com organizações locais.</li>
           </ul>
         </section>
+        <section id="contact" class="about" role="region" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contato</h2>
+          <p>Envie um e-mail para <a href="mailto:contato@maosunidas.org">contato@maosunidas.org</a> ou use nossas redes sociais.</p>
+        </section>
 
         <footer class="footer">
           <small>Feito por kaueMarques — Projeto de demonstração.</small>
         </footer>
+
+        <!-- Modal de doação simples -->
+        <div id="donateModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="donateTitle">
+          <div class="modal-content" role="document">
+            <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+            <h3 id="donateTitle">Obrigado</h3>
+            <p>Obrigado pela sua intenção de apoiar nossa ONG. Sua doação faz a diferença!</p>
+            <div class="modal-actions">
+              <button id="modalOk">Fechar</button>
+            </div>
+          </div>
+        </div>
     </main>
 
     <script type="module" src="/src/main.js"></script>
