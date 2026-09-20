@@ -53,8 +53,44 @@ body.high-contrast .a11y-btn{background:#111;color:#fff;border-color:#444}
 .nav-toggle{position:relative;z-index:1301}
 .nav.open{z-index:1300}
 
+/* Make cards and sections dark in high-contrast so text remains visible */
+body.high-contrast .news-item,
+body.high-contrast .about,
+body.high-contrast .image-card,
+body.high-contrast .modal-content,
+body.high-contrast .footer{
+  background:#111 !important;
+  color:#fff !important;
+  border:1px solid #333;
+}
+
+/* Ensure headings and paragraphs inside cards are visible */
+body.high-contrast .news-item h4,
+body.high-contrast .about h2,
+body.high-contrast p,
+body.high-contrast li{
+  color:#fff !important;
+}
+
+/* CTA styling for visibility */
+body.high-contrast .cta{background:var(--cta);color:#000}
+
+/* Make image borders visible against dark background */
+body.high-contrast .image-card img{border:2px solid #222}
+
 /* Grayscale */
-body.grayscale{filter:grayscale(100%)}
+body.grayscale{filter:none}
+body.grayscale .container,
+body.grayscale .site-header,
+body.grayscale .hero,
+body.grayscale .image-card,
+body.grayscale .news-section,
+body.grayscale .news-item,
+body.grayscale .about,
+body.grayscale .footer,
+body.grayscale .floating-donate,
+body.grayscale .modal-content,
+body.grayscale .video-section{filter:grayscale(100%)}
 
 /* Font scaling helper */
 :root{--base-font-size:16px}
@@ -85,11 +121,12 @@ html{font-size:var(--base-font-size)}
 
 @media (max-width:700px){
   .container{padding:12px;margin:16px auto}
-  .header-inner{flex-direction:row;align-items:center}
-  .nav{display:none;flex-direction:column;background:var(--card);position:absolute;top:64px;right:16px;padding:12px;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
-  .nav.open{display:flex}
-  .nav a{padding:8px 12px}
-  .nav-toggle{display:block}
+  .header-inner{position:relative;flex-direction:row;align-items:center;flex-wrap:wrap}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid #e3e8ee;border-radius:8px;background:#fff;color:#333}
+  #siteNav{position:relative}
+  .nav{display:none;flex-direction:column;background:#fff;position:absolute;top:calc(100% + 8px);left:0;right:0;padding:12px;border:1px solid #e3e8ee;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,0.08);z-index:1300}
+  #siteNav.open .nav{display:flex}
+  .nav a{display:block;padding:8px 12px}
   .donate-btn{padding:8px 10px}
   .hero{padding:20px}
   .hero-title{font-size:20px}

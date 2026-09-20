@@ -1,8 +1,6 @@
-// Projeto minimal: nenhum framework, apenas um console log leve
 document.addEventListener('DOMContentLoaded', ()=>{
   console.log('Landing page carregada - kaueMarques')
 
-  // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', function(e){
       const target = document.querySelector(this.getAttribute('href'))
@@ -14,14 +12,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
   })
 
-  // Modal logic
   const donateBtn = document.getElementById('donateBtn')
   const modal = document.getElementById('donateModal')
   const modalClose = document.getElementById('modalClose')
   const modalOk = document.getElementById('modalOk')
   let lastFocused = null
 
-  // Accessibility defaults and toolbar controls
   const a11yDefaults = {
     contrast: true,
     grayscale: false,
@@ -58,7 +54,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function ensureVlibras(){
     if(window.VLibras) return new window.VLibras.Widget('https://vlibras.gov.br/app')
-    // if script not yet appended, it will be loaded below and init in onload
     if(!document.querySelector('script[src*="vlibras-plugin.js"]')){
       const s = document.createElement('script')
       s.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
@@ -68,7 +63,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   }
 
-  // toolbar handlers
   a11yContrast && a11yContrast.addEventListener('click', ()=>{
     const cur = document.body.classList.contains('high-contrast')
     setContrast(!cur)
@@ -93,7 +87,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     localStorage.setItem('a11y-vlibras','1')
   })
 
-  // apply initial preferences (persisted or defaults)
   (function applyInitialA11y(){
     const contrast = localStorage.getItem('a11y-contrast') !== null ? localStorage.getItem('a11y-contrast') === '1' : a11yDefaults.contrast
     const grayscale = localStorage.getItem('a11y-grayscale') !== null ? localStorage.getItem('a11y-grayscale') === '1' : a11yDefaults.grayscale
@@ -105,7 +98,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(vl) ensureVlibras()
   })()
 
-  // Mobile nav toggle
   const navToggle = document.getElementById('navToggle')
   const siteNav = document.getElementById('siteNav')
   if(navToggle && siteNav){
@@ -114,13 +106,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
       navToggle.setAttribute('aria-expanded', String(!expanded))
       siteNav.classList.toggle('open')
     })
+
+    siteNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.setAttribute('aria-expanded', 'false')
+        siteNav.classList.remove('open')
+      })
+    })
   }
 
   function openModal(){
     lastFocused = document.activeElement
     modal.setAttribute('aria-hidden','false')
     modal.style.display = 'flex'
-    // prevent background scroll and focus without scrolling page
     document.documentElement.style.overflow = 'hidden'
     try{ modalClose.focus({preventScroll:true}) }catch(e){ modalClose.focus() }
   }
@@ -137,13 +135,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   modal && modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal() })
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
 
-  // ensure toolbar buttons don't cause page to jump on focus
   document.querySelectorAll('.a11y-btn, .vlibras-btn, .donate-btn, .nav-toggle').forEach(btn=>{
     btn.addEventListener('mousedown', e=> e.preventDefault())
-    btn.addEventListener('click', ()=>{ try{ btn.focus({preventScroll:true}) }catch(e){ btn.focus() } })
+    btn.addEventListener('click', e=> e.preventDefault())
   })
 
-  // VLibras widget lazy load
   try{
     const s = document.createElement('script')
     s.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
@@ -154,7 +150,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.body.appendChild(s)
   }catch(e){console.warn('VLibras load error',e)}
 
-  // floating donate opens same modal
   const flo = document.querySelector('.floating-donate')
   flo && flo.addEventListener('click', ()=> openModal())
 })
