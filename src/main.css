@@ -7,7 +7,9 @@
 }
 *{box-sizing:border-box}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#222}
-.container{max-width:800px;margin:40px auto;padding:20px}
+.container{max-width:800px;margin:20px auto;padding:20px}
+/* remove extra top margin for header container */
+.site-header .container{margin:0 auto;padding:12px 20px}
 .site-header{background:var(--card);border-bottom:1px solid #e3e8ee}
 .header-inner{display:flex;align-items:center;gap:16px;justify-content:space-between}
 .brand{font-size:18px;margin:0;color:var(--accent)}
