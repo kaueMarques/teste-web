@@ -120,12 +120,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     lastFocused = document.activeElement
     modal.setAttribute('aria-hidden','false')
     modal.style.display = 'flex'
-    modalClose.focus()
+    // prevent background scroll and focus without scrolling page
+    document.documentElement.style.overflow = 'hidden'
+    try{ modalClose.focus({preventScroll:true}) }catch(e){ modalClose.focus() }
   }
   function closeModal(){
     modal.setAttribute('aria-hidden','true')
     modal.style.display = 'none'
-    if(lastFocused) lastFocused.focus()
+    document.documentElement.style.overflow = ''
+    if(lastFocused){ try{ lastFocused.focus({preventScroll:true}) }catch(e){ lastFocused.focus() } }
   }
 
   donateBtn && donateBtn.addEventListener('click', ()=> openModal())
@@ -133,6 +136,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
   modalOk && modalOk.addEventListener('click', ()=> closeModal())
   modal && modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal() })
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
+
+  // ensure toolbar buttons don't cause page to jump on focus
+  document.querySelectorAll('.a11y-btn, .vlibras-btn, .donate-btn, .nav-toggle').forEach(btn=>{
+    btn.addEventListener('mousedown', e=> e.preventDefault())
+    btn.addEventListener('click', ()=>{ try{ btn.focus({preventScroll:true}) }catch(e){ btn.focus() } })
+  })
 
   // VLibras widget lazy load
   try{
